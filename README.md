@@ -1,5 +1,5 @@
 File sharing system-
-This system helps concurrently uplaod retrieve large encypted files through AWS S3 bucket and postgres for local data storage.
+This system helps concurrently uplaod retrieve large encypted files through AWS S3 bucket and postgres for local data storage.(multi-part upload enabled using AWS provided mehods)
 Efficient search requests and creation of shared file for given file id with given expiration time also included.
 A worker after each 1 hour checks for any updated metadata for files cached through redis while retrieval, if any change in metadata for a file is found the cache is invalidated.
 
