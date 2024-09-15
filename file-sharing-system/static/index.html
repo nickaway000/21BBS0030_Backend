@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Console</title>
+</head>
+<body>
+    <script>
+        // Connect to the WebSocket server
+        const ws = new WebSocket("ws://localhost:9080/ws");
+
+        // When a message is received, log it to the console
+        ws.onmessage = function(event) {
+            console.log("Message from server:", event.data);
+        };
+
+        // When the WebSocket connection is established
+        ws.onopen = function() {
+            console.log("WebSocket connection established");
+        };
+
+        // When the WebSocket connection is closed
+        ws.onclose = function() {
+            console.log("WebSocket connection closed");
+        };
+    </script>
+</body>
+</html>

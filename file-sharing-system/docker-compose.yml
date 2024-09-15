@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: file-sharing-app
+    restart: always
+    ports:
+      - "9080:9080"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_USER=nikhil
+      - DB_PASSWORD=Nikhil%40007
+      - DB_NAME=file_sharing_system
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=NzZbFMr2B+3j7BZvin8BCIEr/JcSPTdBvmO0MLjKDDE=
+      - AWS_ACCESS_KEY_ID=AKIAQYEI5GPVL6TGEXVI
+      - AWS_SECRET_ACCESS_KEY=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
+
+  db:
+    image: postgres:13
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: nikhil
+      POSTGRES_PASSWORD: Nikhil%40007
+      POSTGRES_DB: file_sharing_system
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6
+    container_name: redis-cache
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
