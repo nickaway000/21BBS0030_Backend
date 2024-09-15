@@ -1,3 +1,9 @@
+File sharing system-
+Thsi system helps concurrently uplaod retrieve large encypted files through AWS S3 bucket and postgres for local data storage.
+Efficient search requests and creation of shared file for given file id also includded.
+A worker after each 1 hour checks for any updated metadata for files cached through redis while retrieval, if any change in metadata for a file is found the cache is invalidated.
+
+
 tests-
 Register-
 curl -X POST http://localhost:9080/register \
